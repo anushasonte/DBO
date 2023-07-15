@@ -1,0 +1,404 @@
+INSERT INTO public.activity_log(
+	log_entry_id, db_name, event_type, description, sql_command, event_timestamp, login_name, doc_id)
+	VALUES (10,'library','Borrow','succeeded','select book from books',current_timestamp,'Alex Orphan',1001);
+
+INSERT INTO public.activity_log(
+	log_entry_id, db_name, event_type, description, sql_command, event_timestamp, login_name, doc_id)
+	VALUES (11,'library','return','failed','select book from books',current_timestamp,'Alex Orphan',1002);
+
+INSERT INTO public.activity_log(
+	log_entry_id, db_name, event_type, description, sql_command, event_timestamp, login_name, doc_id)
+	VALUES (12,'library','Borrow','succeeded','select book from books',current_timestamp,'Sneha Hiremath',1003);
+
+INSERT INTO public.activity_log(
+	log_entry_id, db_name, event_type, description, sql_command, event_timestamp, login_name, doc_id)
+	VALUES (13,'library','Borrow','succeeded','select book from books',current_timestamp,'Anusha Sonte',1004);
+
+INSERT INTO public.activity_log(
+	log_entry_id, db_name, event_type, description, sql_command, event_timestamp, login_name, doc_id)
+	VALUES (14,'library','Return','succeeded','select book from books',current_timestamp,'Sneha Hiremath',1005);
+
+
+INSERT INTO public.activity_log(
+	log_entry_id, db_name, event_type, description, sql_command, event_timestamp, login_name, doc_id)
+	VALUES (15,'library','Return','succeeded','select book from books',current_timestamp,'Sneha Hiremath',1006);
+
+
+INSERT INTO public.activity_log(
+	log_entry_id, db_name, event_type, description, sql_command, event_timestamp, login_name, doc_id)
+	VALUES (16,'library','Return','succeeded','select book from books',current_timestamp,'Anusha Sonte',1009);
+=======================================================================================================================
+
+INSERT INTO public.book_authors(
+	b_title, doc_id, b_author)
+	VALUES ('Julius Caesar',1001,'W Shakesphere');
+
+INSERT INTO public.book_authors(
+	b_title, doc_id, b_author)
+	VALUES ('wings of fire',1002,'APJ A Kalam');
+
+INSERT INTO public.book_authors(
+	b_title, doc_id, b_author)
+	VALUES ('Romeo and Juliet',1003,'W Shakesphere');
+
+INSERT INTO public.book_authors(
+	b_title, doc_id, b_author)
+	VALUES ('The famous five-1',1004,'Enid blyton');
+
+INSERT INTO public.book_authors(
+	b_title, doc_id, b_author)
+	VALUES ('Harry Potter',1005,'J.K.Rowling');
+=============================================================================================================================
+INSERT INTO public.books(
+	b_title, doc_id, b_edition, b_pubid, b_genre)
+	VALUES ('wings of fire',1002,'1899-09-08','P101','Autobio');
+
+INSERT INTO public.books(
+	b_title, doc_id, b_edition, b_pubid, b_genre)
+	VALUES ('Julius Caesar',1001,'1990-02-03','P102','fiction');
+
+INSERT INTO public.books(
+	b_title, doc_id, b_edition, b_pubid, b_genre)
+	VALUES ('Romeo and Juliet',1003,'1990-02-04','P103','fiction');
+
+INSERT INTO public.books(
+	b_title, doc_id, b_edition, b_pubid, b_genre)
+	VALUES ('The famous five-1',1004,'1991-03-09','P104','fiction');
+
+INSERT INTO public.books(
+	b_title, doc_id, b_edition, b_pubid, b_genre)
+	VALUES ('Harry Potter',1005,'1992-07-04','P105','fiction');
+==============================================================================================================================
+
+INSERT INTO public.borrows(
+	doc_id, u_id)
+	VALUES (1001,1);
+
+INSERT INTO public.borrows(
+	doc_id, u_id)
+	VALUES (1002,2);
+
+INSERT INTO public.borrows(
+	doc_id, u_id)
+	VALUES (1003,3);
+
+INSERT INTO public.borrows(
+	doc_id, u_id)
+	VALUES (1004,4);
+
+INSERT INTO public.borrows(
+	doc_id, u_id)
+	VALUES (1005,5);
+
+INSERT INTO public.borrows(
+	doc_id, u_id)
+	VALUES (1006,5);
+
+
+INSERT INTO public.borrows(
+	doc_id, u_id)
+	VALUES (1009,5);
+
+
+=================================================================================================================================
+
+INSERT INTO public.digitalcontent(
+	book, audiovideo, maps, statistics, images, d_authorname, doc_id)
+	VALUES ('Y','Y','Y','N','N','W shakesphere',1003);
+
+INSERT INTO public.digitalcontent(
+	book, audiovideo, maps, statistics, images, d_authorname, doc_id)
+	VALUES ('Y','N','N','Y','Y','APJ A kalam',1002);
+
+
+INSERT INTO public.digitalcontent(
+	book, audiovideo, maps, statistics, images, d_authorname, doc_id)
+	VALUES ('Y','Y','Y','Y','Y','Enid blyton',1004);
+
+INSERT INTO public.digitalcontent(
+	book, audiovideo, maps, statistics, images, d_authorname, doc_id)
+	VALUES ('Y','Y','Y','N','N','J.K.Rowling',1005);
+
+INSERT INTO public.digitalcontent(
+	book, audiovideo, maps, statistics, images, d_authorname, doc_id)
+	VALUES ('Y','Y','Y','N','N','A Sundharam',1006);
+
+INSERT INTO public.digitalcontent(
+	book, audiovideo, maps, statistics, images, d_authorname, doc_id)
+	VALUES ('Y','Y','Y','N','N','Bunty D',1009);
+
+
+====================================================================================================================================
+
+INSERT INTO public.documents(
+	doc_id, doc_category, doc_room_number, doc_room_level, doc_rack_number, doc_rack_level, doc_isdigitalversion, doc_isissuedby, doc_borrowedby, doc_issuedtimestamp, doc_totalnoofcopies, doc_noofcopiesavailable, doc_lastmodifiedtimestamp,id)
+	VALUES (1001,'books',201,1,2,01,'Y','Swetha S','Alex Orphan',current_timestamp,100,99,current_timestamp,10001);
+	
+INSERT INTO public.documents(
+	doc_id, doc_category, doc_room_number, doc_room_level, doc_rack_number, doc_rack_level, doc_isdigitalversion, doc_isissuedby, doc_borrowedby, doc_issuedtimestamp, doc_totalnoofcopies, doc_noofcopiesavailable, doc_lastmodifiedtimestamp,id)
+	VALUES (1002,'books',301,1,2,02,'Y','Brat Pit','Alex Orphan',current_timestamp,100,99,current_timestamp,10002);
+	
+INSERT INTO public.documents(
+	doc_id, doc_category, doc_room_number, doc_room_level, doc_rack_number, doc_rack_level, doc_isdigitalversion, doc_isissuedby, doc_borrowedby, doc_issuedtimestamp, doc_totalnoofcopies, doc_noofcopiesavailable, doc_lastmodifiedtimestamp,id)
+	VALUES (1003,'books',401,2,2,04,'Y','Swetha S','Sneha Hiremath',current_timestamp,100,99,current_timestamp,10003);
+	
+
+INSERT INTO public.documents(
+	doc_id, doc_category, doc_room_number, doc_room_level, doc_rack_number, doc_rack_level, doc_isdigitalversion, doc_isissuedby, doc_borrowedby, doc_issuedtimestamp, doc_totalnoofcopies, doc_noofcopiesavailable, doc_lastmodifiedtimestamp,id)
+	VALUES (1004,'books',101,1,2,04,'Y','Brat Pit','Anusha Sonte',current_timestamp,100,99,current_timestamp,10004);
+	
+INSERT INTO public.documents(
+	doc_id, doc_category, doc_room_number, doc_room_level, doc_rack_number, doc_rack_level, doc_isdigitalversion, doc_isissuedby, doc_borrowedby, doc_issuedtimestamp, doc_totalnoofcopies, doc_noofcopiesavailable, doc_lastmodifiedtimestamp,id)
+	VALUES (1005,'books',501,2,2,06,'Y','Swetha S','Sneha Hiremath',current_timestamp,100,99,current_timestamp,10005);
+
+INSERT INTO public.documents(
+	doc_id, doc_category, doc_room_number, doc_room_level, doc_rack_number, doc_rack_level, doc_isdigitalversion, doc_isissuedby, doc_borrowedby, doc_issuedtimestamp, doc_totalnoofcopies, doc_noofcopiesavailable, doc_lastmodifiedtimestamp,id)
+	VALUES (1006,'journal',120,2,3,06,'Y','Brat Pit','Anusha Sonte',current_timestamp,140,89,current_timestamp,10006);
+
+INSERT INTO public.documents(
+	doc_id, doc_category, doc_room_number, doc_room_level, doc_rack_number, doc_rack_level, doc_isdigitalversion, doc_isissuedby, doc_borrowedby, doc_issuedtimestamp, doc_totalnoofcopies, doc_noofcopiesavailable, doc_lastmodifiedtimestamp,id)
+	VALUES (1009,'journal',120,2,4,07,'Y','Swetha S','Anusha Sonte',current_timestamp,140,89,current_timestamp,10009);
+
+INSERT INTO public.documents(
+	doc_id, doc_category, doc_room_number, doc_room_level, doc_rack_number, doc_rack_level, doc_isdigitalversion, doc_isissuedby, doc_borrowedby, doc_issuedtimestamp, doc_totalnoofcopies, doc_noofcopiesavailable, doc_lastmodifiedtimestamp,id)
+	VALUES (1010,'Magazine',121,3,4,07,'Y','Swetha S','Anusha Sonte',current_timestamp,141,90,current_timestamp,10010);
+
+INSERT INTO public.documents(
+	doc_id, doc_category, doc_room_number, doc_room_level, doc_rack_number, doc_rack_level, doc_isdigitalversion, doc_isissuedby, doc_borrowedby, doc_issuedtimestamp, doc_totalnoofcopies, doc_noofcopiesavailable, doc_lastmodifiedtimestamp,id)
+	VALUES (1011,'Thesis',122,3,5,08,'Y','Swetha S','Sneha Hiremath',current_timestamp,142,91,current_timestamp,10011);
+
+
+
+
+=========================================================================================================================================
+
+INSERT INTO public.journal(
+	j_name, doc_id, j_pubid, j_type)
+	VALUES ('Day in zoya life',1006,'P106','inspirational');
+
+INSERT INTO public.journal(
+	j_name, doc_id, j_pubid, j_type)
+	VALUES ('Daily rituals',1009,'P107','inspirational');
+
+================================================================================================================================================
+
+INSERT INTO public.journal_authors(
+	j_name, doc_id, j_author)
+	VALUES ('Day in zoya life',1006, 'A Sundharam');
+
+INSERT INTO public.journal_authors(
+	j_name, doc_id, j_author)
+	VALUES ('Daily Rituals',1009, 'Bunty D');
+
+================================================================================================================================================
+INSERT INTO public.librarian(
+	l_id, l_name, l_position)
+	VALUES (205,'Swetha S','issuer');
+
+INSERT INTO public.librarian(
+	l_id, l_name, l_position)
+	VALUES (206,'Brat Pit','issuer');
+
+INSERT INTO public.librarian(
+	l_id, l_name, l_position)
+	VALUES (207,'Jane ','Organiser');
+
+INSERT INTO public.librarian(
+	l_id, l_name, l_position)
+	VALUES (208,'Tadd ','Manager');
+
+INSERT INTO public.librarian(
+	l_id, l_name, l_position)
+	VALUES (209,'Nova','Organiser');
+=================================================================================================================================================
+INSERT INTO public.login_auth(
+	user_name, u_type, password, otp_verification)
+	VALUES ('Swetha S','librarian','1234',6677);
+
+INSERT INTO public.login_auth(
+	user_name, u_type, password, otp_verification)
+	VALUES ('Brat Pit','librarian','4321',5544);
+
+INSERT INTO public.login_auth(
+	user_name, u_type, password, otp_verification)
+	VALUES ('Alex Orphan','user','5678',3322);
+
+INSERT INTO public.login_auth(
+	user_name, u_type, password, otp_verification)
+	VALUES ('Anusha Sonte','user','4322',9900);
+
+INSERT INTO public.login_auth(
+	user_name, u_type, password, otp_verification)
+	VALUES ('Sneha hiremath','user','0000',8899);
+===================================================================================================================================================
+INSERT INTO public.logs_in(
+	u_id, l_id)
+	VALUES (1,205);
+
+INSERT INTO public.logs_in(
+	u_id, l_id)
+	VALUES (2,206);
+
+INSERT INTO public.logs_in(
+	u_id, l_id)
+	VALUES (3,207);
+
+INSERT INTO public.logs_in(
+	u_id, l_id)
+	VALUES (4,208);
+
+INSERT INTO public.logs_in(
+	u_id, l_id)
+	VALUES (5,209);
+=======================================================================================================================================================
+INSERT INTO public.maintains(
+	doc_id, l_id)
+	VALUES (1001,207);
+
+INSERT INTO public.maintains(
+	doc_id, l_id)
+	VALUES (1002,207);
+
+INSERT INTO public.maintains(
+	doc_id, l_id)
+	VALUES (1003,209);
+
+INSERT INTO public.maintains(
+	doc_id, l_id)
+	VALUES (1006,209);
+=======================================================================================================================================================
+INSERT INTO public.manages(
+	u_id, l_id)
+	VALUES (1,205);
+
+INSERT INTO public.manages(
+	u_id, l_id)
+	VALUES (2,206);
+
+INSERT INTO public.manages(
+	u_id, l_id)
+	VALUES (3,205);
+
+INSERT INTO public.manages(
+	u_id, l_id)
+	VALUES (4,206);
+
+INSERT INTO public.manages(
+	u_id, l_id)
+	VALUES (5,205);
+======================================================================================================================================================
+
+INSERT INTO public.published_by(
+	b_title, j_name, m_name, t_name, doc_id, pub_id)
+	VALUES ('Julius Caesar','Daily Rituals','People','ZHT Storage',1001,'P101');
+
+INSERT INTO public.published_by(
+	b_title, j_name, m_name, t_name, doc_id, pub_id)
+	VALUES ('Wings of fire','Day in zoya life','null','null',1002,'P102');
+
+INSERT INTO public.published_by(
+	b_title, j_name, m_name, t_name, doc_id, pub_id)
+	VALUES ('Romio and Juliet','null','null','null',1003,'P103');
+
+INSERT INTO public.published_by(
+	b_title, j_name, m_name, t_name, doc_id, pub_id)
+	VALUES ('The famous five-1','null','null','null',1004,'P104');
+
+INSERT INTO public.published_by(
+	b_title, j_name, m_name, t_name, doc_id, pub_id)
+	VALUES ('Harry potter','null','null','null',1005,'P105');
+
+======================================================================================================================================================
+INSERT INTO public.publisher(
+	pub_id, p_name, p_publisheddate, p_address)
+	VALUES ('P101','Rom','1899-01-02','201 King Drive');
+
+INSERT INTO public.publisher(
+	pub_id, p_name, p_publisheddate, p_address)
+	VALUES ('P102','Sam','1990-02-03','100 S State');
+
+INSERT INTO public.publisher(
+	pub_id, p_name, p_publisheddate, p_address)
+	VALUES ('P103','Tom','1991-01-03','420 E LM');
+
+INSERT INTO public.publisher(
+	pub_id, p_name, p_publisheddate, p_address)
+	VALUES ('P104','Nom','1992-02-05','540 N State');
+
+INSERT INTO public.publisher(
+	pub_id, p_name, p_publisheddate, p_address)
+	VALUES ('P105','Kom','1879-07-03','205 King Drive');
+
+INSERT INTO public.publisher(
+	pub_id, p_name, p_publisheddate, p_address)
+	VALUES ('P106','Oom','1879-07-05','2000 Drive');
+
+INSERT INTO public.publisher(
+	pub_id, p_name, p_publisheddate, p_address)
+	VALUES ('P107','Kom','1898-07-03','2050 King');
+
+
+
+
+=========================================================================================================================================================
+
+INSERT INTO public.users(
+	u_id, u_firstname, u_lastname, u_picture, u_email, u_street, u_city, u_zip, u_state, u_booklimit, u_fineamount, u_isactive)
+	VALUES (1,'Anusha','sonte','asp@gmail.com','','martin','chicago',60616,'IL',10,0,'Y');
+
+INSERT INTO public.users(
+	u_id, u_firstname, u_lastname, u_picture, u_email, u_street, u_city, u_zip, u_state, u_booklimit, u_fineamount, u_isactive)
+	VALUES (2,'Sneha','hiremath','','sneha@gmail.com','king','chicago',60616,'IL',10,0,'Y');
+
+INSERT INTO public.users(
+	u_id, u_firstname, u_lastname, u_picture, u_email, u_street, u_city, u_zip, u_state, u_booklimit, u_fineamount, u_isactive)
+	VALUES (3,'Alex','orphan','','Alx@gmail.com','downtown','chicago',60616,'IL',10,0,'Y');
+
+INSERT INTO public.users(
+	u_id, u_firstname, u_lastname, u_picture, u_email, u_street, u_city, u_zip, u_state, u_booklimit, u_fineamount, u_isactive)
+	VALUES (4,'Samantha','A','','sam@gmail.com','martin','chicago',60616,'IL',10,0,'Y');
+
+INSERT INTO public.users(
+	u_id, u_firstname, u_lastname, u_picture, u_email, u_street, u_city, u_zip, u_state, u_booklimit, u_fineamount, u_isactive)
+	VALUES (5,'tooray','B','','tooraygmail.com','luther','chicago',60616,'IL',10,0,'Y');
+===========================================================================================================================================================
+INSERT INTO public.users_phone(
+	u_id, u_phone)
+	VALUES (1, 0010008900);
+
+INSERT INTO public.users_phone(
+	u_id, u_phone)
+	VALUES (2, 909087650);
+
+INSERT INTO public.users_phone(
+	u_id, u_phone)
+	VALUES (3, 345290876);
+
+INSERT INTO public.users_phone(
+	u_id, u_phone)
+	VALUES (4, 0933445588);
+
+INSERT INTO public.users_phone(
+	u_id, u_phone)
+	VALUES (5, 0972351789);
+===========================================================================================================================================================
+
+
+INSERT INTO public.magazine(
+	m_name, doc_id, m_pubid, m_issues, m_type)
+	VALUES ('People',1010,'P106','unknown','Entertainment');
+
+============================================================================================================================================================
+INSERT INTO public.magazine_contributors(
+	m_name, doc_id, m_contributor)
+	VALUES ('People',1010,'Jack');
+================================================================================================================
+INSERT INTO public.magazine_editors(
+	m_name, doc_id, m_editor)
+	VALUES ('People',1010,'Manny');
+================================================================================================================
+
+INSERT INTO public.thesis(
+	t_name, doc_id, t_category, t_pubid)
+	VALUES ('ZHT STorage',1011,'Research','P103');
+================================================================================================================

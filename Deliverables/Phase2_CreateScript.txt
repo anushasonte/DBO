@@ -1,0 +1,263 @@
+-------Submitted by Group #25
+-------Anusha SP
+-------(A20518694) asp@hawk.iit.edu
+-------Swetha Sighakolli
+-------(A20516677) ssighakolli@hawk.iit.edu
+-------Sneha Hiremath
+-------(A20514161) shiremath2@hawk.iit.edu
+
+
+CREATE TABLE Login_Auth (
+        user_name VARCHAR(20) NOT NULL,
+        u_type VARCHAR(10) NOT NULL,
+        password VARCHAR(100) NOT NULL,
+        otp_verification INT NOT NULL,
+        PRIMARY KEY (user_name)
+); 
+
+
+CREATE TABLE Documents (
+        doc_id VARCHAR(10) NOT NULL,
+        doc_category VARCHAR(10) NOT NULL,
+        doc_room_number INT NOT NULL,
+        doc_room_level INT NOT NULL,
+        doc_rack_number INT NOT NULL,
+        doc_rack_level INT NOT NULL,
+        doc_isDigitalVersion VARCHAR(1) DEFAULT 'Y' NOT NULL,
+        doc_isIssuedBy VARCHAR(20),
+        doc_BorrowedBy VARCHAR(20),
+        doc_issuedTimestamp TIMESTAMP,
+        doc_totalNoOfCopies INT NOT NULL,
+        doc_noOfCopiesAvailable INT NOT NULL,
+        doc_lastModifiedTimestamp TIMESTAMP,
+        PRIMARY KEY (doc_id)
+);
+
+
+
+
+CREATE TABLE Activity_log (
+        log_entry_id SERIAL NOT NULL,
+        db_name VARCHAR(15) NOT NULL,
+        event_type VARCHAR(10) NOT NULL,
+        description VARCHAR(100) NOT NULL,
+        sql_command VARCHAR(100) NOT NULL,
+        event_timestamp TIMESTAMP NOT NULL,
+        login_name VARCHAR(20),
+        doc_id VARCHAR(10) NOT NULL,
+                   PRIMARY KEY(log_entry_id),
+                  FOREIGN KEY(doc_id) REFERENCES Documents(doc_id)
+
+
+);
+
+
+CREATE TABLE Librarian (
+        l_id VARCHAR(20) NOT NULL,
+        l_name VARCHAR(20) NOT NULL,
+        l_position VARCHAR(20) NOT NULL,
+        PRIMARY KEY (l_id)
+);
+
+
+CREATE TABLE Users (
+        u_id VARCHAR(10) NOT NULL,
+        u_firstName VARCHAR(20) NOT NULL,
+        u_lastName VARCHAR(20),
+        u_picture BYTEA,
+        u_email VARCHAR(15) NOT NULL,
+        u_street VARCHAR(10) NOT NULL,
+        u_city VARCHAR(10) NOT NULL,
+        u_zip INT NOT NULL,
+        u_state VARCHAR(10) NOT NULL,
+        u_booklimit INT DEFAULT 5 NOT NULL,
+        u_fineAmount INT  DEFAULT 50 NOT NULL,
+        u_isActive VARCHAR(1) DEFAULT 'Y' NOT NULL,
+        PRIMARY KEY (u_id)
+);
+
+
+
+
+CREATE TABLE Users_phone (
+        u_id VARCHAR(20) NOT NULL,
+        u_phone INT NOT NULL,
+        PRIMARY KEY (u_id,u_phone)
+);
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE Publisher (
+        pub_id VARCHAR(10) NOT NULL,
+        p_name VARCHAR(20) NOT NULL,
+        p_publishedDate DATE NOT NULL,
+        p_address VARCHAR(100) NOT NULL,
+        PRIMARY KEY (pub_id)
+);
+
+
+CREATE TABLE DigitalContent (
+        book VARCHAR(1) DEFAULT ‘N’ NOT NULL,
+        audioVideo VARCHAR(1) DEFAULT ‘N’ NOT NULL,
+        maps VARCHAR(1) DEFAULT ‘N’ NOT NULL,
+        statistics VARCHAR(1) DEFAULT ‘N’ NOT NULL,
+        images VARCHAR(1) DEFAULT ‘N’ NOT NULL,
+        d_authorname VARCHAR(20) NOT NULL,
+        doc_id VARCHAR(10) NOT NULL,
+              FOREIGN KEY(doc_id) REFERENCES Documents(doc_id)
+);
+
+
+
+
+CREATE TABLE Books (
+        b_title VARCHAR(200) NOT NULL,
+        doc_id VARCHAR(10) NOT NULL,
+        b_edition DATE  NOT NULL,
+        b_pubid VARCHAR(20) NOT NULL,
+        b_genre VARCHAR(10) NOT NULL,
+        PRIMARY KEY (b_title,doc_id),
+                  FOREIGN KEY(doc_id) REFERENCES Documents(doc_id),
+                  FOREIGN KEY(b_pubid) REFERENCES Publisher(pub_id)
+);
+
+
+
+
+
+
+CREATE TABLE Book_authors (
+        b_title VARCHAR(200) NOT NULL,
+        doc_id VARCHAR(10) NOT NULL,
+        b_author VARCHAR(20) NOT NULL,
+              PRIMARY KEY (b_title,doc_id,b_author),
+              FOREIGN KEY(b_title) REFERENCES Books(b_title),
+              FOREIGN KEY(doc_id) REFERENCES Documents(doc_id)
+);
+
+
+CREATE TABLE Journal (
+        j_name VARCHAR(200) NOT NULL,
+        doc_id VARCHAR(10) NOT NULL,
+        j_pubid VARCHAR(20) NOT NULL,
+        j_type VARCHAR(20) NOT NULL,
+        PRIMARY KEY (j_name,doc_id),
+                  FOREIGN KEY(doc_id) REFERENCES  Documents(doc_id),
+                  FOREIGN KEY(j_pubid) REFERENCES Publisher(pub_id)
+);
+
+
+
+
+CREATE TABLE Journal_authors (
+        j_name VARCHAR(200) NOT NULL,
+        doc_id VARCHAR(10) NOT NULL,
+        j_author VARCHAR(20) NOT NULL,
+        PRIMARY KEY (j_name,doc_id,j_author),
+                  FOREIGN KEY(doc_id) REFERENCES Documents(doc_id)
+);
+
+
+
+
+CREATE TABLE Magazine (
+        m_name VARCHAR(200) NOT NULL,
+        doc_id VARCHAR(10) NOT NULL,
+        m_pubid VARCHAR(20) NOT NULL,
+        m_issues VARCHAR(20) NOT NULL,
+        m_type VARCHAR(20) NOT NULL,
+        PRIMARY KEY (m_name,doc_id),
+                  FOREIGN KEY(doc_id) REFERENCES Documents(doc_id),
+                  FOREIGN KEY(m_pubid) REFERENCES Publisher(pub_id)
+);
+
+
+CREATE TABLE Magazine_Contributors (
+        m_name VARCHAR(200) NOT NULL,
+        doc_id VARCHAR(10) NOT NULL,
+        m_contributor VARCHAR(20) NOT NULL,
+        PRIMARY KEY (m_name,doc_id,m_contributor),
+                   FOREIGN KEY(doc_id) REFERENCES Documents(doc_id)
+);
+
+
+
+
+
+
+
+
+CREATE TABLE Magazine_Editors(
+        m_name VARCHAR(200) NOT NULL,
+        doc_id VARCHAR(10) NOT NULL,
+        m_editor VARCHAR(20) NOT NULL,
+        PRIMARY KEY (m_name,doc_id,m_editor),
+                  FOREIGN KEY(doc_id) REFERENCES Documents(doc_id)
+);
+
+
+CREATE TABLE Thesis(
+        t_name VARCHAR(200) NOT NULL,
+        doc_id VARCHAR(10) NOT NULL,
+        t_category VARCHAR(20) NOT NULL,
+        t_pubid VARCHAR(20) NOT NULL,
+        PRIMARY KEY (t_name,doc_id),
+              FOREIGN KEY(doc_id) REFERENCES Documents(doc_id),
+              FOREIGN KEY(t_pubid) REFERENCES Publisher(pub_id)
+);
+
+
+CREATE TABLE Logs_In (
+        u_id VARCHAR(20) NOT NULL,
+        l_id VARCHAR(20) NOT NULL,
+        PRIMARY KEY (u_id,l_id),
+                  FOREIGN KEY(u_id) REFERENCES Users(u_id),
+                  FOREIGN KEY(l_id) REFERENCES Librarian(l_id)
+);
+
+
+CREATE TABLE Manages(
+        u_id VARCHAR(20) NOT NULL,
+        l_id VARCHAR(20) NOT NULL,
+        PRIMARY KEY (u_id,l_id),
+              FOREIGN KEY(u_id) REFERENCES Users(u_id),
+              FOREIGN KEY(l_id) REFERENCES Librarian(l_id)
+);
+CREATE TABLE Maintains(
+        doc_id VARCHAR(10) NOT NULL,
+        l_id VARCHAR(20) NOT NULL,
+        PRIMARY KEY (doc_id,l_id),
+              FOREIGN KEY(doc_id) REFERENCES  Documents(doc_id),
+              FOREIGN KEY(l_id) REFERENCES Librarian(l_id)
+
+
+) ;
+
+
+CREATE TABLE Borrows(
+              doc_id VARCHAR(10) NOT NULL,
+        u_id VARCHAR(20) NOT NULL,
+        PRIMARY KEY (doc_id,u_id),
+              FOREIGN KEY (doc_id) REFERENCES Documents(doc_id),
+              FOREIGN KEY (u_id) REFERENCES Users(u_id)              
+) ;
+
+
+CREATE TABLE Published_By (
+        b_title VARCHAR(20) NOT NULL,
+        j_name VARCHAR(20) NOT NULL,
+        m_name VARCHAR(20) NOT NULL,
+        t_name VARCHAR(20) NOT NULL,
+              doc_id VARCHAR(10) NOT NULL,
+        pub_id  VARCHAR(10) NOT NULL,
+              PRIMARY KEY (doc_id,b_title,j_name,m_name,t_name,pub_id),
+              FOREIGN KEY(doc_id) REFERENCES Documents(doc_id),
+              FOREIGN KEY(pub_id) REFERENCES Publisher (pub_id)
+);

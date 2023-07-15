@@ -1,0 +1,13 @@
+@import "../scss/variables";
+@import "../scss/sidebar-wrapper";
+@import "../scss/sidebar-menu";
+@import "../scss/sidebar-header";
+@import "../scss/sidebar-footer";
+
+.sidebar-toggle-button {
+  display: none !important;
+}
+.sidebar-wrapper {
+  height: max-content !important;
+  max-height: none !important;
+}
